@@ -18,6 +18,11 @@ public class Balloon extends Enemy {
 	}
 
 	@Override
+	public boolean handleCollidePortal() {
+		return false;
+	}
+
+	@Override
 	protected void chooseSprite() {
 		switch(_direction) {
 			case 0:

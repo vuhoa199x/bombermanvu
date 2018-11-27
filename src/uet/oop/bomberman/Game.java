@@ -4,10 +4,11 @@ import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.gui.Frame;
 import uet.oop.bomberman.input.Keyboard;
 
-import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.awt.Canvas;
+import java.awt.Graphics;
 
 /**
  * Tạo vòng lặp cho game, lưu trữ một vài tham số cấu hình toàn cục,
@@ -29,6 +30,7 @@ public class Game extends Canvas {
 	
 	public static final int TIME = 200;
 	public static final int POINTS = 0;
+	public static final int LIVES = 3;
 	
 	protected static int SCREENDELAY = 3;
 
@@ -110,7 +112,7 @@ public class Game extends Canvas {
 	
 	public void start() {
 		_running = true;
-		
+		GameSound.getIstance().getAudio(GameSound.PLAYGAME).loop();
 		long  lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0; //nanosecond, 60 frames per second

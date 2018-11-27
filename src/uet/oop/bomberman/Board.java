@@ -13,10 +13,11 @@ import uet.oop.bomberman.input.Keyboard;
 import uet.oop.bomberman.level.FileLevelLoader;
 import uet.oop.bomberman.level.LevelLoader;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.awt.Font;
+import java.awt.Graphics;
 
 /**
  * Quản lý thao tác điều khiển, load level, render các màn hình của game
@@ -114,6 +115,9 @@ public class Board implements IRender {
 		_screenToShow = 1;
 		_game.resetScreenDelay();
 		_game.pause();
+		GameSound.getIstance().getAudio(GameSound.PLAYGAME).stop();
+		GameSound.getIstance().getAudio(GameSound.LOSE).play();
+
 	}
 	
 	public boolean detectNoEnemies() {
@@ -185,6 +189,20 @@ public class Board implements IRender {
 				return (Bomber) cur;
 		}
 		
+		return null;
+	}
+
+	public Character getCharacterAt(double x, double y) {
+		Iterator<Character> itr = _characters.iterator();
+
+		Character cur;
+		while(itr.hasNext()) {
+			cur = itr.next();
+
+			if(cur.getXTile() == x && cur.getYTile() == y)
+				return cur;
+		}
+
 		return null;
 	}
 	

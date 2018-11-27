@@ -16,7 +16,12 @@ public class Oneal extends Enemy {
 		_ai = new AIMedium(_board.getBomber(), this);
 		_direction  = _ai.calculateDirection();
 	}
-	
+
+	@Override
+	public boolean handleCollidePortal() {
+		return false;
+	}
+
 	@Override
 	protected void chooseSprite() {
 		switch(_direction) {

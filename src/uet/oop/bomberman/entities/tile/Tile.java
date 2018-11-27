@@ -15,7 +15,6 @@ public abstract class Tile extends Entity {
 		_y = y;
 		_sprite = sprite;
 	}
-
 	/**
 	 * Mặc định không cho bất cứ một đối tượng nào đi qua
 	 * @param e
